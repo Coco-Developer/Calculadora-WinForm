@@ -61,7 +61,7 @@ namespace WinFormsApp1
             txtPantalla.Text += btn.Text;
 
         }
-        private void Btn8_Click(object sender, EventArgs e)
+        private void btn8_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             txtPantalla.Text += btn.Text;
@@ -120,10 +120,23 @@ namespace WinFormsApp1
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            segundoNumero = double.Parse(txtPantalla.Text);
-            double resultado = RealizarCalculo(primerNumero, segundoNumero, operacion);
-            txtPantalla.Text = resultado.ToString();
+          
+            // Verificar si el TextBox no está vacío
+            if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
+            {
+                segundoNumero = double.Parse(txtPantalla.Text);
+                double resultado = RealizarCalculo(primerNumero, segundoNumero, operacion);
+                txtPantalla.Text = resultado.ToString();
+            }
+            else
+            {
+                // Mostrar un mensaje de error o realizar alguna acción apropiada si el TextBox está vacío
+                MessageBox.Show("Cargue una operacion");
+            }
+
+
         }
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -176,13 +189,11 @@ namespace WinFormsApp1
 
         }
 
-        private void btn8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPunto_Click(object sender, EventArgs e)
         {
+
+            Button btn = sender as Button;
+            txtPantalla.Text += btn.Text;
 
         }
     }
