@@ -16,7 +16,7 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-     
+
         private void btn1_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -84,43 +84,79 @@ namespace WinFormsApp1
 
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            operacion = btn.Text;
-            primerNumero = double.Parse(txtPantalla.Text);
-            txtPantalla.Text = "";
+            // Verificar si el TextBox no está vacío
+            if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
+            {
+                // Si hay un valor válido en el TextBox, realizar la operación de resta
+                operacion = "*";
+                primerNumero = double.Parse(txtPantalla.Text);
+                txtPantalla.Text = "";
+            }
+            else
+            {
+                // Mostrar un mensaje de error o realizar alguna acción apropiada si el TextBox está vacío
+                MessageBox.Show("No hay ningún número para multiplicar");
+            }
 
         }
 
         private void btnDivision_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            operacion = btn.Text;
-            primerNumero = double.Parse(txtPantalla.Text);
-            txtPantalla.Text = "";
+            // Verificar si el TextBox no está vacío
+            if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
+            {
+                // Si hay un valor válido en el TextBox, realizar la operación de resta
+                operacion = "/";
+                primerNumero = double.Parse(txtPantalla.Text);
+                txtPantalla.Text = "";
+            }
+            else
+            {
+                // Mostrar un mensaje de error o realizar alguna acción apropiada si el TextBox está vacío
+                MessageBox.Show("No hay ningún número para dividir");
+            }
 
         }
         private void btnSuma_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            operacion = btn.Text;
-            primerNumero = double.Parse(txtPantalla.Text);
-            txtPantalla.Text = "";
+            // Verificar si el TextBox no está vacío
+            if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
+            {
+                // Si hay un valor válido en el TextBox, realizar la operación de resta
+                operacion = "+";
+                primerNumero = double.Parse(txtPantalla.Text);
+                txtPantalla.Text = "";
+            }
+            else
+            {
+                // Mostrar un mensaje de error o realizar alguna acción apropiada si el TextBox está vacío
+                MessageBox.Show("No hay ningún número para sumar");
+            }
 
         }
 
         private void btnResta_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            operacion = btn.Text;
-            primerNumero = double.Parse(txtPantalla.Text);
-            txtPantalla.Text = "";
+            // Verificar si el TextBox no está vacío
+            if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
+            {
+                // Si hay un valor válido en el TextBox, realizar la operación de resta
+                operacion = "-";
+                primerNumero = double.Parse(txtPantalla.Text);
+                txtPantalla.Text = "";
+            }
+            else
+            {
+                // Mostrar un mensaje de error o realizar alguna acción apropiada si el TextBox está vacío
+                MessageBox.Show("No hay ningún número para restar");
+            }
 
         }
 
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-          
+
             // Verificar si el TextBox no está vacío
             if (!string.IsNullOrWhiteSpace(txtPantalla.Text))
             {
@@ -134,6 +170,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Cargue una operacion");
             }
 
+                 
 
         }
 
@@ -174,16 +211,6 @@ namespace WinFormsApp1
         private void txtPantalla_TextChanged(object sender, EventArgs e)
         {
 
-            // Limitar la cantidad de decimales mostrados
-            if (txtPantalla.Text.Contains("."))
-            {
-                string[] partes = txtPantalla.Text.Split('.');
-                if (partes.Length == 2 && partes[1].Length > 2)
-                {
-                    txtPantalla.Text = partes[0] + "." + partes[1].Substring(0, 2);
-                }
-            }
-
             // Alinear el texto a la derecha
             txtPantalla.TextAlign = HorizontalAlignment.Right;
 
@@ -196,7 +223,15 @@ namespace WinFormsApp1
             txtPantalla.Text += btn.Text;
 
         }
-    }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Establecer el valor inicial del cuadro de texto a "0"
+            txtPantalla.Text = "0";
 
- 
+
+        }
+
+
+
+    }
 }
